@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand/v2"
+	"strconv"
 )
 
 func main() {
@@ -35,7 +36,13 @@ func main() {
 	minVal := ""
 
 	for result, occ := range results {
-		avg += float64(occ)
+		val, err := strconv.Atoi(result)
+
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		avg += float64(val * occ)
 
 		if max < occ {
 			max = occ
